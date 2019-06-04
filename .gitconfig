@@ -1,0 +1,59 @@
+[user]
+	name = Christopher Boerger
+	email = boerger_christopher@network.lilly.com
+[core]
+	excludesfile = /Users/chrisb/.gitignore_global
+  	editor = nvim
+[push]
+	default = simple
+[alias]
+  	au = "!git for-each-ref --format='%(color:cyan)%(authorname)%(color:reset)_,,,_%(color:yellow)%(committerdate)%(color:reset)_,,,_%(refname)' | sort -k1 -k2 | awk 'BEGIN {FS=\"_,,,_\"}; {printf \"%-30s %-40s %s\\n\", $1, $2, $3}'"
+	bl = blame
+	br = branch
+	ci = commit
+	cia = commit --amend
+	co = checkout
+	delloc = branch -d --
+	delrem = push origin --delete --
+  dt = difftool
+	fe = fetch -p
+	last = log -1 HEAD
+	lg = log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' --abbrev-commit --date=relative
+  mt = mergetool
+	pl = pull
+  plr = pull --rebase
+	pu = push
+	sh = stash -u
+	shbr = stash branch
+	shdel = stash drop
+	shin = stash apply --index
+	shli = stash list
+	st = status
+	uncommit = reset HEAD --
+	unci = reset HEAD --
+	undo = checkout --
+[credential]
+	helper = osxkeychain
+[transfer]
+	fsckobjects = true
+[fetch]
+	fsckobjects = true
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[diff]
+  tool = nvimdiff
+[difftool]
+  prompt = false
+[difftool "nvimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE
+[merge]
+	tool = diffconflicts
+[mergetool]
+  prompt = true
+	keepBackup = false
+[mergetool "diffconflicts"]
+	cmd = diffconflicts nvim -d $BASE $LOCAL $REMOTE $MERGED
+	trustExitCode = true
