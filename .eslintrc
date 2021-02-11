@@ -12,6 +12,7 @@
 // React Typescript project
 {
   "root": true,
+  "env": { "browser": true },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
