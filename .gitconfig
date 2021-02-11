@@ -1,13 +1,13 @@
 [user]
-	name = Christopher Boerger
-	email = boerger_christopher@network.lilly.com
+	name = Boerger, Chris
+	email = cboerger@fusionalliance.com
 [core]
 	excludesfile = /Users/chrisb/.gitignore_global
-  	editor = nvim
+  editor = nvim
 [push]
 	default = simple
 [alias]
-  	au = "!git for-each-ref --format='%(color:cyan)%(authorname)%(color:reset)_,,,_%(color:yellow)%(committerdate)%(color:reset)_,,,_%(refname)' | sort -k1 -k2 | awk 'BEGIN {FS=\"_,,,_\"}; {printf \"%-30s %-40s %s\\n\", $1, $2, $3}'"
+  au = "!git for-each-ref --format='%(color:cyan)%(authorname)%(color:reset)_,,,_%(color:yellow)%(committerdate)%(color:reset)_,,,_%(refname)' | sort -k1 -k2 | awk 'BEGIN {FS=\"_,,,_\"}; {printf \"%-30s %-40s %s\\n\", $1, $2, $3}'"
 	bl = blame
 	br = branch
 	ci = commit
@@ -23,6 +23,7 @@
 	pl = pull
   plr = pull --rebase
 	pu = push
+  re = restore
 	sh = stash -u
 	shbr = stash branch
 	shdel = stash drop
@@ -32,6 +33,7 @@
 	uncommit = reset HEAD --
 	unci = reset HEAD --
 	undo = checkout --
+	conflicted = !nvim +Conflicted
 [credential]
 	helper = osxkeychain
 [transfer]
@@ -44,16 +46,20 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 [diff]
-  tool = nvimdiff
+	tool = Kaleidoscope
 [difftool]
-  prompt = false
-[difftool "nvimdiff"]
-  cmd = nvim -d $LOCAL $REMOTE
+  	prompt = false
 [merge]
-	tool = diffconflicts
+	tool = Kaleidoscope
 [mergetool]
-  prompt = true
+	prompt = false
 	keepBackup = false
-[mergetool "diffconflicts"]
-	cmd = diffconflicts nvim -d $BASE $LOCAL $REMOTE $MERGED
+[commit]
+	template = /Users/chrisb/.stCommitMsg
+[pager]
+	branch = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
