@@ -23,4 +23,9 @@ Session.vim
 *gwd_preview_*
 .vscode
 Thumbs.db
+*.crt
+*.csr
+*.ext
+*.key
 .nova
+.github
