@@ -17,49 +17,49 @@
 	delrem = push origin --delete --
 	dt = difftool
 	fe = fetch -p
-	last = log -1 HEAD
-	lg = log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' --abbrev-commit --date=relative
-	mt = mergetool
-	pl = pull
-	plr = pull --rebase
-	pu = push
-	re = restore
-	sh = stash -u
-	shbr = stash branch
-	shdel = stash drop
-	shin = stash apply --index
-	shli = stash list
-	st = status
-	uncommit = reset HEAD --
-	unci = reset HEAD --
-	undo = checkout --
-	conflicted = !nvim +Conflicted
+  last = log -1 HEAD
+  lg = log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' --abbrev-commit --date=relative
+  mt = mergetool
+  pl = pull
+  plr = pull --rebase
+  pu = push
+  re = restore
+  sh = stash -u
+  shbr = stash branch
+  shdel = stash drop
+  shin = stash apply --index
+  shli = stash list
+  st = status
+  uncommit = reset HEAD --
+  unci = reset HEAD --
+  undo = checkout --
+  conflicted = !nvim +Conflicted
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 [transfer]
-	fsckobjects = true
+  fsckobjects = true
 [fetch]
-	fsckobjects = true
+  fsckobjects = true
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
 [diff]
-	tool = Kaleidoscope
+  tool = Kaleidoscope
 [difftool]
-  	prompt = false
-[merge]
-	tool = Kaleidoscope
-[mergetool]
 	prompt = false
-	keepBackup = false
+[merge]
+  tool = Kaleidoscope
+[mergetool]
+  prompt = false
+  keepBackup = false
 [commit]
-	template = /Users/chrisb/.stCommitMsg
+  template = /Users/chrisb/.stCommitMsg
 [pager]
-	branch = false
+  branch = false
 [mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
 [difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
